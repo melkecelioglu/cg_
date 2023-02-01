@@ -1,8 +1,12 @@
-import cv2
 import cv2 as cv
 import numpy as np
+import numpy as np
+import cv2
+import cv2
+import sys
+from PIL.Image import Image
 
-im = cv2.imread('merve.jpeg')
+im = cv2.imread('normalize.jpg')
 
 
 def menu():
@@ -64,7 +68,7 @@ def F1():
 
 
 def F2():
-    img=cv2.imread('merve.jpeg',1)
+    img=cv2.imread('normalize.jpg',1)
     cv2.imshow('Orginal',img)
     kernel=np.ones((5,5),'uint8')
     dilate_img=cv2.dilate(img,kernel,iterations=1)
@@ -72,21 +76,21 @@ def F2():
     cv2.waitKey(0)
 
 def F3():
-    img = cv2.imread('merve.jpeg', 0)
+    img = cv2.imread('normalize.jpg', 0)
     kernel = np.ones((5, 5), np.uint8)
     erosion = cv2.erode(img,kernel,iterations = 1)
     cv2.imshow('Orginal Image', img)
     cv2.imshow('Erosion Image', erosion)
     cv2.waitKey(0)
 def F4():
-    img = cv2.imread('merve.jpeg', 0)
+    img = cv2.imread('normalize.jpg', 0)
     kernel = np.ones((5, 5), np.uint8)
     opening = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)
     cv2.imshow('Orginal Image', img)
     cv2.imshow('Opening Image', opening)
     cv2.waitKey(0)
 def F5():
-    img = cv2.imread('merve.jpeg', 0)
+    img = cv2.imread('normalize.jpg', 0)
     kernel = np.ones((5, 5), np.uint8)
     closing = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)
     cv2.imshow('Orginal Image', img)

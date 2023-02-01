@@ -1,8 +1,4 @@
 import cv2
-
-
-# value ları 200, 250 gibi gir
-
 def controller(img, brightness=255,contrast=127):
     brightness = int((brightness - 0) * (255 - (-255)) / (510 - 0) + (-255))
     contrast = int((contrast - 0) * (127 - (-127)) / (254 - 0) + (-127))
@@ -36,7 +32,7 @@ if __name__ == '__main__':
     s2 = input("Please enter the value of Contrast")
     sayi1 = int(s1)
     sayi2 = int(s2)
-    orginalPic = cv2.imread("tree.jpeg")
+    orginalPic = cv2.imread("normalize.jpg")
     img = orginalPic.copy()
     cv2.namedWindow('Picture')
     cv2.imshow('Picture', orginalPic)

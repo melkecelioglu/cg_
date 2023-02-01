@@ -1,22 +1,22 @@
-import matplotlib.pyplot as plt
 import numpy as np
-from numpy import array as a
+import matplotlib.pyplot as plt
 
-from Bezier import Bezier
+def bezier_curve(control_points, num_points=100):
+    """
+    Draws a Bezier curve with the given control points.
+    """
+    t = np.linspace(0, 1, num_points)
+    curve = np.zeros((num_points, 2))
+    for i in range(num_points):
+        curve[i] = (1-t[i])**3 * control_points[0] + 3*(1-t[i])**2*t[i] * control_points[1] + 3*(1-t[i])*t[i]**2 * control_points[2] + t[i]**3 * control_points[3]
+    return curve
 
-fig = plt.figure(dpi=128)
+def draw_bezier_curve(control_points):
+    curve = bezier_curve(control_points)
+    x, y = curve.T
+    plt.plot(x, y, 'b-')
+    plt.plot(control_points[:, 0], control_points[:, 1], 'ro')
+    plt.show()
 
-
-t_points = np.arange(0, 1, 0.01)
-test = a([[0, 0], [0, 8], [5, 10], [9, 7], [4, 3]])
-test_set_1 = Bezier.Curve(t_points, test)
-
-plt.subplot(1, 1, 1)
-plt.xticks([i1 for i1 in range(-20, 20)]), plt.yticks([i1 for i1 in range(-20, 20)])
-plt.gca().set_aspect('equal', adjustable='box')
-plt.grid(b=True, which='major', axis='both')
-
-plt.plot(test_set_1[:, 0], test_set_1[:, 1])
-plt.plot(test[:, 0], test[:, 1], 'ro:')
-plt.show()
-help(Bezier)
+control_points = np.array([[0, 0], [0, 1], [1, 1], [1, 0]])
+draw_bezier_curve(control_points)

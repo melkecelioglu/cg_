@@ -1,8 +1,8 @@
-import cv2
 import numpy as np
+import cv2
 from PIL.Image import Image
 
-im = cv2.imread('tree.jpeg')
+im = cv2.imread('normalize.jpg')
 
 
 def menu():
@@ -24,7 +24,7 @@ def menu():
         elif x == "3":
             F3()
         elif x == "4":
-            f4()
+            F4()
         elif x == "6":
             print("Good bye!")
             break
@@ -32,31 +32,27 @@ def menu():
             print("TRY AGAIN!")
 def F1():
     th, im_th = cv2.threshold(im, 128, 255, cv2.THRESH_BINARY)
-    cv2.imshow("aa", im_th)
+    cv2.imshow("F1 IMAGE", im_th)
     cv2.waitKey(0)
 def F2():
     th, im_th_tz = cv2.threshold(im, 128, 255, cv2.THRESH_TOZERO)
-    cv2.imshow("aa",  im_th_tz)
+    cv2.imshow("F2 IMAGE",  im_th_tz)
     cv2.waitKey(0)
 
 def F3():
     im_gray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
-
     th, im_gray_th_otsu = cv2.threshold(im_gray, 128, 192, cv2.THRESH_OTSU)
-
-
-    cv2.imshow("aa", im_gray_th_otsu)
+    cv2.imshow("F3 IMAGE", im_gray_th_otsu)
     cv2.waitKey(0)
 
-
-def f4():
-
-    im_gray = np.array(Image.open('test_gray.jpg').convert('L'))
+def F4():
+    im_gray = np.array(Image.open('normalize.jpg').convert('L'))
     im_bin = (im_gray > 128) * 255
     Image.fromarray(np.uint8(im_bin)).save('deneme.jpg')
     img = cv2.imread('deneme.jpg', 0)
-    cv2.imshow("aa", img)
+    cv2.imshow("F4 IMAGE", img)
     cv2.waitKey(0)
+
 
 
 menu()

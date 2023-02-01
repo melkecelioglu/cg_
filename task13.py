@@ -1,3 +1,4 @@
+from PIL import Image
 import numpy as np
 from PIL import Image
 from PIL import ImageDraw
@@ -14,5 +15,5 @@ I1 = ImageDraw.Draw(img)
 myFont = ImageFont.truetype("Montserrat-ExtraLight.ttf", 35)
 
 # because I have montserrat-extralight in my MacOs on terminal, library, fonts.
-I1.text((20, 50), "%" + a + " is covered by green", font=myFont, fill=(255, 69, 0))
+I1.text((20, 50), "%"+ a + " is covered by green", font=myFont, fill=(255,69,0))
 img.show()

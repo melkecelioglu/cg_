@@ -1,8 +1,6 @@
 import cv2
 import numpy
 import numpy as np
-
-
 def main():
     x = ""
     while x != "6":
@@ -45,7 +43,7 @@ def EdgeDetection():
         cv2.waitKey(0)
     """
 
-    i = cv2.imread('tree.jpeg')
+    i = cv2.imread('normalize.jpg')
     img_gray = cv2.cvtColor(i, cv2.COLOR_BGR2GRAY)
     img_blur = cv2.GaussianBlur(img_gray, (3, 3), 0)
     edges = cv2.Canny(image=img_blur, threshold1=100, threshold2=200)
@@ -56,7 +54,7 @@ def EdgeDetection():
     cv2.destroyAllWindows()
 
 def HighPass():
-    image = cv2.imread('tree.jpeg')
+    image = cv2.imread('normalize.jpg')
     kernel = np.array([[-1,-1,-1],
                        [-1, 9,-1],
                        [-1,-1,-1]])
@@ -67,7 +65,7 @@ def HighPass():
     cv2.destroyAllWindows()
 
 def GaussianBlur():
-    src = cv2.imread('tree.jpeg', cv2.IMREAD_UNCHANGED)
+    src = cv2.imread('normalize.jpg', cv2.IMREAD_UNCHANGED)
 
     # apply guassian blur on src image
     dst = cv2.GaussianBlur(src, (5, 5), cv2.BORDER_DEFAULT)
@@ -76,9 +74,8 @@ def GaussianBlur():
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
-
 def MedianFilter():
-    img_noisy1 = cv2.imread('tree.jpeg', 0)
+    img_noisy1 = cv2.imread('normalize.jpg', 0)
     m, n = img_noisy1.shape
     img_new1 = np.zeros([m, n])
 
@@ -103,7 +100,7 @@ def MedianFilter():
 
 
 def Averaging():
-    img = cv2.imread('tree.jpeg', 0)
+    img = cv2.imread('normalize.jpg', 0)
     m, n = img.shape
 
     mask = np.ones([3, 3], dtype=int)
@@ -122,6 +119,5 @@ def Averaging():
     img_new = img_new.astype(np.uint8)
     cv2.imshow("Averaging", numpy.hstack((img, img_new)))
     cv2.waitKey(0)
-
 
 main()

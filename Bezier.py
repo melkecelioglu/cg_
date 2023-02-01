@@ -4,8 +4,6 @@ Version 1.1, from < BezierCurveFunction-v1.ipynb > on 2019-05-02
 
 import numpy as np
 
-__all__ = ["Bezier"]
-
 
 class Bezier():
     def TwoPoints(t, P1, P2):
@@ -37,13 +35,13 @@ class Bezier():
             newpoints    list of numpy arrays; points.
         """
         newpoints = []
-        #print("points =", points, "\n")
+        print("points =", points, "\n")
         for i1 in range(0, len(points) - 1):
-            #print("i1 =", i1)
-            #print("points[i1] =", points[i1])
+            print("i1 =", i1)
+            print("points[i1] =", points[i1])
 
             newpoints += [Bezier.TwoPoints(t, points[i1], points[i1 + 1])]
-            #print("newpoints  =", newpoints, "\n")
+            print("newpoints  =", newpoints, "\n")
         return newpoints
 
     def Point(t, points):
@@ -56,13 +54,13 @@ class Bezier():
             newpoint     numpy array; a point.
         """
         newpoints = points
-        #print("newpoints = ", newpoints)
+        print("newpoints = ", newpoints)
         while len(newpoints) > 1:
             newpoints = Bezier.Points(t, newpoints)
             #print("newpoints in loop = ", newpoints)
 
-        #print("newpoints = ", newpoints)
-        #print("newpoints[0] = ", newpoints[0])
+        print("newpoints = ", newpoints)
+        print("newpoints[0] = ", newpoints[0])
         return newpoints[0]
 
     def Curve(t_values, points):
@@ -84,12 +82,12 @@ class Bezier():
 
         curve = np.array([[0.0] * len(points[0])])
         for t in t_values:
-            #print("curve                  \n", curve)
-            #print("Bezier.Point(t, points) \n", Bezier.Point(t, points))
+            print("curve                  \n", curve)
+            print("Bezier.Point(t, points) \n", Bezier.Point(t, points))
 
             curve = np.append(curve, [Bezier.Point(t, points)], axis=0)
 
-            #print("curve after            \n", curve, "\n--- --- --- --- --- --- ")
+            print("curve after            \n", curve, "\n--- --- --- --- --- --- ")
         curve = np.delete(curve, 0, 0)
-        #print("curve final            \n", curve, "\n--- --- --- --- --- --- ")
+        print("curve final            \n", curve, "\n--- --- --- --- --- --- ")
         return curve

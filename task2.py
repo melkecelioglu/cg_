@@ -1,20 +1,18 @@
 import re
-
 import numpy
 from PIL import Image
 from matplotlib import pyplot as plt
-
-
 def pbm2numpy(filename):
 
     fin = None
     debug = True
+
     try:
         fin = open(filename, 'r')
 
         while True:
             header = fin.readline().strip()
-            if header.startswith('#'):
+            if header.startswith('#') :
                 continue
             elif header == 'P3':
                 break
@@ -88,10 +86,8 @@ def pbm2numpy(filename):
             fin.close()
         fin = None
     return None
-
-
-im = Image.open("images.ppm")
-im.save("newjpgFile.jpeg")
+im = Image.open("blue_example.ppm")
+im.save("newjpgFile.jpg")
 imgplot = plt.imshow(im)
 plt.show()
-pbm2numpy('images.ppm')
+pbm2numpy('blue_example.ppm')

@@ -1,8 +1,7 @@
-import cv2
-import numpy as np
 from PIL import Image
 from matplotlib import pyplot as plt
-
+import numpy as np
+import cv2
 
 def makeHis(filename):
     img = cv2.imread(filename, 0)
@@ -37,7 +36,7 @@ def normalizeBlue(intensity):
     return iO
 
 
-img = cv2.imread('merve.jpeg', 0)
+img = cv2.imread('normalize.jpg', 0)
 plt.imshow(img, cmap='gray')
 
 
@@ -87,12 +86,12 @@ def drawImage(im, sonuc):
     plt.show()
 
 #-------
-i2 = cv2.imread('tree.jpeg', 0)
+i2 = cv2.imread('normalize.jpg', 0)
 plt.imshow(i2, cmap='gray')
 result, normalized_cumsum = equalizeHist(i2)
 drawImage(i2, result)
 #-------
-i = Image.open("tree.jpeg")
+i = Image.open("normalize.jpg")
 i.show()
 A = i.split()
 normRed = A[0].point(normalizeRed)
