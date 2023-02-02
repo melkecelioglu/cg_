@@ -4,7 +4,7 @@ Version 1.1, from < BezierCurveFunction-v1.ipynb > on 2019-05-02
 
 import numpy as np
 
-
+//hgjk
 class Bezier():
     def TwoPoints(t, P1, P2):
         """
